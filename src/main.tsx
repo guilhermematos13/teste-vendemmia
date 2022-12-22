@@ -1,6 +1,7 @@
 import React from 'react'
 import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import './assets/global.css'
 import './assets/styles.css'
 
 import { Login } from './pages/Login'
