@@ -1,13 +1,16 @@
-import { ReactNode } from 'react'
+import { ChangeEvent, ChangeEventHandler, ReactNode } from 'react'
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     icon?: ReactNode
+    type?: string
+    onChange?: ChangeEventHandler<HTMLInputElement> | undefined
 }
 
 export const Input = ({
     name,
     value,
     onChange,
+    type,
     id,
     placeholder,
     icon,
@@ -19,6 +22,7 @@ export const Input = ({
                 className="py-2 focus: outline-none"
                 name={name}
                 value={value}
+                type={type}
                 onChange={onChange}
                 id={id}
                 placeholder={placeholder}
