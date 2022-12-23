@@ -1,4 +1,7 @@
 import { useFormik } from 'formik'
+import { useNavigate } from 'react-router-dom'
+import { toast } from 'react-hot-toast'
+import * as yup from 'yup'
 
 import { FaUser } from 'react-icons/fa'
 import { IoKeySharp } from 'react-icons/io5'
@@ -8,13 +11,32 @@ import { Button } from '../components/Button'
 import { Input } from '../components/Input'
 
 export const Login = () => {
+    const validateLogin = yup.object().shape({
+        userLogin: yup.string().required('Este campo é obrigatório*'),
+        userPassword: yup.string().required('Este campo é obrigatório*'),
+    })
+
     const formik = useFormik({
         initialValues: {
             userLogin: '',
             userPassword: '',
         },
-        onSubmit: (values) => console.log(values),
+
+        validationSchema: validateLogin,
+
+        onSubmit: (values) => {
+            if (
+                values.userLogin === 'vendemmia' &&
+                values.userPassword === '123123123'
+            ) {
+                navigate('/users')
+            } else {
+                toast.error('Usuário ou senha incorreta')
+            }
+        },
     })
+
+    const navigate = useNavigate()
 
     return (
         <form onSubmit={formik.handleSubmit}>
@@ -44,6 +66,12 @@ export const Login = () => {
                                     <FaUser className="text-pink-800 font-bold" />
                                 }
                             />
+                            {formik.touched.userLogin &&
+                                formik.errors.userLogin && (
+                                    <span className="text-red-500 text-sm">
+                                        {formik.errors.userLogin}
+                                    </span>
+                                )}
                             <label
                                 htmlFor="userPassword"
                                 className="font-bold text-purple-900 cursor-pointer"
@@ -61,6 +89,12 @@ export const Login = () => {
                                     <IoKeySharp className="text-pink-800 font-bold" />
                                 }
                             />
+                            {formik.touched.userPassword &&
+                                formik.errors.userPassword && (
+                                    <span className="text-red-500 text-sm">
+                                        {formik.errors.userPassword}
+                                    </span>
+                                )}
                         </div>
 
                         <Button name="Entrar" type="submit" />

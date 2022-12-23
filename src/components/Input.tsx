@@ -19,7 +19,7 @@ export const Input = ({
         <div className="flex gap-2 items-center border border-black rounded-md px-2 w-full">
             {icon && icon}
             <input
-                className="py-2 focus: outline-none"
+                className="py-2 focus: outline-none w-full"
                 name={name}
                 value={value}
                 type={type}
