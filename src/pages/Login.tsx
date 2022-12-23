@@ -90,7 +90,7 @@ export const Login = () => {
                                 }
                             />
                             {formik.touched.userPassword &&
-                                formik.errors.userPassword && (
+                                formik.errors.userLogin && (
                                     <span className="text-red-500 text-sm">
                                         {formik.errors.userPassword}
                                     </span>
