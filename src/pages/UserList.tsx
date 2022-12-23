@@ -1,3 +1,3 @@
 export const UserList = () => {
-    return <h1>UserList</h1>
+    return <h1 className="bg-white">UserList</h1>
 }
