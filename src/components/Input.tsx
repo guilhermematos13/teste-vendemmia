@@ -1,4 +1,8 @@
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {}
+import { ReactNode } from 'react'
+
+interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
+    icon?: ReactNode
+}
 
 export const Input = ({
     name,
@@ -6,15 +10,19 @@ export const Input = ({
     onChange,
     id,
     placeholder,
+    icon,
 }: InputProps) => {
     return (
-        <input
-            className="border border-black rounded-md focus:outline-none p-2 px-2 w-full"
-            name={name}
-            value={value}
-            onChange={onChange}
-            id={id}
-            placeholder={placeholder}
-        ></input>
+        <div className="flex gap-2 items-center border border-black rounded-md px-2 w-full">
+            {icon && icon}
+            <input
+                className="py-2 focus: outline-none"
+                name={name}
+                value={value}
+                onChange={onChange}
+                id={id}
+                placeholder={placeholder}
+            ></input>
+        </div>
     )
 }
