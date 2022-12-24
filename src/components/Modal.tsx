@@ -42,7 +42,7 @@ export const Modal = ({
         getUserDetails()
     }, [])
     return (
-        <div className="flex justify-center items-center fixed w-screen h-screen">
+        <div className="flex justify-center mt-36 fixed w-screen h-screen">
             <div className="bg-purple-900 bg-opacity-95 border-2 border-black rounded-xl p-4 fixed w-1/4 h-auto">
                 <FaWindowClose
                     onClick={changeModal}

@@ -2,6 +2,7 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { toast } from 'react-hot-toast'
 import { BsThreeDotsVertical } from 'react-icons/bs'
+import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from 'react-icons/bs'
 
 import vendemmiaLogo from '../assets/vendemmiaLogo.png'
 import { Button } from '../components/Button'
@@ -14,6 +15,8 @@ export const UserList = () => {
     const [isLoading, setIsLoading] = useState(true)
     const [openModal, setOpenModal] = useState(false)
     const [userId, setUserId] = useState('')
+    const [page, setPage] = useState(1)
+    const [isLastPage, setIsLastPage] = useState(false)
 
     const handleChangeModal = (id?: string) => {
         if (id) {
@@ -22,11 +25,27 @@ export const UserList = () => {
         setOpenModal(!openModal)
     }
 
+    const pageNext = () => {
+        setPage(page + 1)
+    }
+
+    const pagePrev = () => {
+        setPage(page - 1)
+    }
+
     const getListUser = () => {
         axios
-            .get('https://63a1c51eba35b96522e7a1b1.mockapi.io/vdm/Users')
+            .get(
+                `https://63a1c51eba35b96522e7a1b1.mockapi.io/vdm/Users?limit=12&page=${page}`
+            )
             .then(function (response) {
-                setUserList(response.data)
+                if (response.data.length != 0) {
+                    setUserList(response.data)
+                    setIsLastPage(false)
+                } else {
+                    pagePrev()
+                    setIsLastPage(true)
+                }
             })
             .catch(function () {
                 toast.error('Algo deu errado!')
@@ -38,7 +57,7 @@ export const UserList = () => {
 
     useEffect(() => {
         getListUser()
-    }, [])
+    }, [page])
 
     return (
         <div>
@@ -86,6 +105,24 @@ export const UserList = () => {
                         ))}
                     </div>
                 )}
+                <div className="w-full gap-4 mt-4 flex items-center justify-center">
+                    {page > 1 && (
+                        <button onClick={pagePrev}>
+                            <BsArrowLeftCircleFill
+                                size={30}
+                                className="text-white"
+                            />
+                        </button>
+                    )}
+                    {!isLastPage && (
+                        <button onClick={pageNext}>
+                            <BsArrowRightCircleFill
+                                size={30}
+                                className="text-white"
+                            />
+                        </button>
+                    )}
+                </div>
             </div>
         </div>
     )
