@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 import { BsThreeDotsVertical } from 'react-icons/bs'
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from 'react-icons/bs'
@@ -17,6 +18,8 @@ export const UserList = () => {
     const [userId, setUserId] = useState('')
     const [page, setPage] = useState(1)
     const [isLastPage, setIsLastPage] = useState(false)
+
+    const navigate = useNavigate()
 
     const handleChangeModal = (id?: string) => {
         if (id) {
@@ -78,7 +81,12 @@ export const UserList = () => {
                     <label className="font-bold text-lg text-purple-800">
                         Lista de usuários
                     </label>
-                    <Button className="w-24" name="Sair" type="button" />
+                    <Button
+                        className="w-24"
+                        name="Sair"
+                        type="button"
+                        onClick={() => navigate('/')}
+                    />
                 </div>
                 {isLoading ? (
                     <Loading />

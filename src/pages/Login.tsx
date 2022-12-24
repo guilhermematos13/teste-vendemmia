@@ -9,8 +9,11 @@ import vendemmiaLogo from '../assets/vendemmiaLogo2.png'
 
 import { Button } from '../components/Button'
 import { Input } from '../components/Input'
+import { useEffect } from 'react'
 
 export const Login = () => {
+    const navigate = useNavigate()
+
     const validateLogin = yup.object().shape({
         userLogin: yup.string().required('Este campo é obrigatório*'),
         userPassword: yup.string().required('Este campo é obrigatório*'),
@@ -35,9 +38,6 @@ export const Login = () => {
             }
         },
     })
-
-    const navigate = useNavigate()
-
     return (
         <form onSubmit={formik.handleSubmit}>
             <div className="bg-gradient-to-r from-indigo-800 via-purple-600 to-pink-800 h-screen">
