@@ -43,7 +43,7 @@ Desenvolvimento de um teste para o processo seletivo da Vendemmia.
 ## 🖲️ Features
 
 -   **Mostrar/Ocultar Senha**
--   **Layout Reponsivo**
+-   **Layout Responsivo**
 -   **Validação de Formulário**
 -   **Feedback de erro das API's**
 -   **Carregamento de Listagem**
