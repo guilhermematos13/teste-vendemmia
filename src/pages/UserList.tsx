@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 import { BsThreeDotsVertical } from 'react-icons/bs'
+import { CgProfile } from 'react-icons/cg'
 import { BsArrowLeftCircleFill, BsArrowRightCircleFill } from 'react-icons/bs'
 
 import vendemmiaLogo from '../assets/vendemmiaLogo.png'
@@ -57,7 +58,7 @@ export const UserList = () => {
                 setIsLoading(false)
             })
     }
-
+    CgProfile
     useEffect(() => {
         getListUser()
     }, [page])
@@ -91,14 +92,20 @@ export const UserList = () => {
                 {isLoading ? (
                     <Loading />
                 ) : (
-                    <div className=" grid grid-cols-4 gap-4">
+                    <div className="grid gap-4 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-4">
                         {userList.map((user) => (
                             <div className="flex items-center justify-between gap-4 bg-white-100 rounded-md w-full p-4">
-                                <img
-                                    className="rounded-lg border border-purple-800 h-20"
-                                    src={user.avatar}
-                                    alt="avatar do usuário"
-                                />
+                                {user.avatar ? (
+                                    <img
+                                        className="rounded-lg border border-purple-800 h-20"
+                                        src={user.avatar}
+                                        alt="avatar do usuário"
+                                    />
+                                ) : (
+                                    <div className="p-2 max-h-20 border border-purple-800 rounded-lg">
+                                        <CgProfile size={60} />
+                                    </div>
+                                )}
                                 <div className="flex flex-col items-center">
                                     <label className="font-bold text-purple-800">
                                         {user.name}
