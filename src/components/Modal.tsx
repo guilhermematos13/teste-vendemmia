@@ -43,12 +43,14 @@ export const Modal = ({
     }, [])
     return (
         <div className="flex justify-center mt-36 fixed w-screen h-screen">
-            <div className="bg-purple-900 bg-opacity-95 border-2 border-black rounded-xl p-4 fixed w-1/4 h-auto">
-                <FaWindowClose
-                    onClick={changeModal}
-                    className="text-white cursor-pointer float-right"
-                    size={20}
-                />
+            <div className="bg-purple-900 bg-opacity-95 border-2 border-black rounded-xl p-4 fixed xs:w-full sm:w-1/3 lg:w-1/4 h-auto">
+                <div className="flex w-full justify-end mb-4">
+                    <FaWindowClose
+                        onClick={changeModal}
+                        className="text-white cursor-pointer float-right"
+                        size={20}
+                    />
+                </div>
                 {isLoading ? (
                     <Loading />
                 ) : (
