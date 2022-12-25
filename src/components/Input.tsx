@@ -1,7 +1,8 @@
-import { ChangeEvent, ChangeEventHandler, ReactNode } from 'react'
+import { ChangeEventHandler, ReactNode } from 'react'
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     icon?: ReactNode
+    passwordIcon?: ReactNode
     type?: string
     onChange?: ChangeEventHandler<HTMLInputElement> | undefined
 }
@@ -14,6 +15,7 @@ export const Input = ({
     id,
     placeholder,
     icon,
+    passwordIcon,
 }: InputProps) => {
     return (
         <div className="flex gap-2 items-center border border-black rounded-md px-2 w-full">
@@ -27,6 +29,7 @@ export const Input = ({
                 id={id}
                 placeholder={placeholder}
             ></input>
+            {passwordIcon && passwordIcon}
         </div>
     )
 }

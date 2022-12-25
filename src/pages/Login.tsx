@@ -5,14 +5,25 @@ import * as yup from 'yup'
 
 import { FaUser } from 'react-icons/fa'
 import { IoKeySharp } from 'react-icons/io5'
+import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 import vendemmiaLogo from '../assets/vendemmiaLogo2.png'
 
 import { Button } from '../components/Button'
 import { Input } from '../components/Input'
-import { useEffect } from 'react'
+import { useState } from 'react'
 
 export const Login = () => {
     const navigate = useNavigate()
+
+    const [passwordType, setPasswordType] = useState('password')
+
+    const togglePassword = () => {
+        if (passwordType === 'password') {
+            setPasswordType('text')
+            return
+        }
+        setPasswordType('password')
+    }
 
     const validateLogin = yup.object().shape({
         userLogin: yup.string().required('Este campo é obrigatório*'),
@@ -78,17 +89,34 @@ export const Login = () => {
                             >
                                 Senha
                             </label>
+
                             <Input
                                 name="userPassword"
                                 value={formik.values.userPassword}
-                                type="password"
+                                type={passwordType}
                                 onChange={formik.handleChange}
                                 id="userPassword"
                                 placeholder="Digite a senha"
                                 icon={
                                     <IoKeySharp className="text-pink-800 font-bold" />
                                 }
+                                passwordIcon={
+                                    passwordType === 'password' ? (
+                                        <AiOutlineEye
+                                            onClick={togglePassword}
+                                            className="text-pink-800 font-bold cursor-pointer"
+                                            size={25}
+                                        />
+                                    ) : (
+                                        <AiOutlineEyeInvisible
+                                            onClick={togglePassword}
+                                            className="text-pink-800 font-bold cursor-pointer"
+                                            size={25}
+                                        />
+                                    )
+                                }
                             />
+
                             {formik.touched.userPassword &&
                                 formik.errors.userLogin && (
                                     <span className="text-red-500 text-sm">
