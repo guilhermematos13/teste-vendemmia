@@ -58,3 +58,7 @@ Desenvolvimento de um teste para o processo seletivo da Vendemmia.
 
 -   **Login:** `vendemmia`
 -   **Senha:** `123123123`
+
+## Link do Deploy
+
+-   [Vendemmia - Teste](https://teste-vendemmia.vercel.app/)
