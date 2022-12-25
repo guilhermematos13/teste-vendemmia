@@ -53,3 +53,8 @@ Desenvolvimento de um teste para o processo seletivo da Vendemmia.
 -   **Criação de Componentes Reutilizáveis**
 -   **Loading**
 -   **Modal de Detalhes**
+
+## 👤 Dados do Login
+
+-   **Login:** `vendemmia`
+-   **Senha:** `123123123`
