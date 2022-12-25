@@ -6,19 +6,19 @@ Desenvolvimento de um teste para o processo seletivo da Vendemmia.
 
 ### Para instalar as dependências
 
-```http
+```bash
   npm install
 ```
 
 ### Para rodar o projeto
 
-```http
+```bash
   npm run dev
 ```
 
 ### Gerar build do projeto
 
-```http
+```bash
   npm run build
 ```
 
