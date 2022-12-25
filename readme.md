@@ -36,7 +36,7 @@ Desenvolvimento de um teste para o processo seletivo da Vendemmia.
 -   **Formik**
 -   **React-Hot-Toast**
 -   **React-Icons**
--   **React-Loaging**
+-   **React-Loading**
 -   **React-Router-Dom**
 -   **Yup**
 
@@ -61,4 +61,4 @@ Desenvolvimento de um teste para o processo seletivo da Vendemmia.
 
 ## Link do Deploy
 
--   [Vendemmia - Teste](https://teste-vendemmia.vercel.app/)
+[Vendemmia - Deployed](https://teste-vendemmia.vercel.app/)
