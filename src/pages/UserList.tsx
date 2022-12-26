@@ -58,7 +58,6 @@ export const UserList = () => {
                 setIsLoading(false)
             })
     }
-    CgProfile
     useEffect(() => {
         getListUser()
     }, [page])
